@@ -18,6 +18,16 @@ def score(keyFileName, responseFileName):
         key[i] = key[i].rstrip('\n')
         response[i] = response[i].rstrip('\n')
 
+        if key[i] == response[i]:
+            correct += 1
+        else:
+            incorrect += 1
+
+        if response[i]:
+            response_total += 1
+        if key[i]:
+            key_total += 1
+
     print(correct, "out of", str(correct + incorrect) + " tags correct")
     accuracy = 100.0 * correct / (correct + incorrect)
     print("  accuracy: %5.2f" % accuracy)
