@@ -46,16 +46,12 @@ def score(keyFileName, responseFileName):
     return accuracy
 
 
-def visualize(titles, model_accuracy):
-
-    random_accuracy = [50, 50, 50, 50]
-    manual_accuracy = [60, 60, 60, 60]
+def visualize(titles, model_accuracy, manual_accuracy):
 
     X_axis = np.arange(len(titles))
 
-    plt.bar(X_axis - 0.25, random_accuracy, 0.25, label='Random')
-    plt.bar(X_axis, manual_accuracy, 0.25, label='Manual')
-    plt.bar(X_axis + 0.25, model_accuracy, 0.25, label='LSTM Model')
+    plt.bar(X_axis - 0.15, manual_accuracy, 0.30, label='Manual')
+    plt.bar(X_axis + 0.15, model_accuracy, 0.30, label='LSTM Model')
 
     plt.xticks(X_axis, titles)
     plt.yticks(np.arange(0, 101, 10))
@@ -67,25 +63,31 @@ def visualize(titles, model_accuracy):
 
 
 def main(args):
-    model_accuracy = [70, 85, 75, 90]
-    datasets = ["Yelp_Polarity", "Yelp_Rating",
-                "Rotten_Tomatoes_Polarity", "Tweet_Emoji_Labeling"]
+
+    manual_accuracy = [74, 48, 90, 1]
+
+    model_accuracy = [50, 50, 50, 50]  # temporary
+
+    datasets = ["Yelp Polarity", "Yelp Rating",
+                "Rotten Tomatoes Polarity", "Tweet Emoji Labeling"]
 
     """
+    model_accuracy = []
     for name in datasets:
+        name = name.replace(" ", "_")
+
         key_file = name + "_key" + ".txt"  # add correct file extension
         response_file = name + "_res" + ".txt"  # add correct file extension
 
         s = score(key_file, response_file)
         model_accuracy.append(s)
     """
-
     #key_file = args[1]
     #response_file = args[2]
 
     #s = score(key_file, response_file)
 
-    visualize(datasets, model_accuracy)
+    visualize(datasets, model_accuracy, manual_accuracy)
 
 
 if __name__ == '__main__':
