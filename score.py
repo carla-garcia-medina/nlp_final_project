@@ -64,7 +64,7 @@ def visualize(titles, model_accuracy, manual_accuracy):
 
 def main(args):
 
-    manual_accuracy = [74, 48, 90, 1]
+    manual_accuracy = [74, 48, 90, 19]
 
     model_accuracy = [50, 50, 50, 50]  # temporary
 
